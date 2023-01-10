@@ -1,0 +1,9 @@
+mutation LoginDoctor($input: LoginDoctorInput) {
+  loginDoctor(input: $input) {
+    _id
+    email
+    hospital
+    password
+    token
+  }
+}

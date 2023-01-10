@@ -1,0 +1,83 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+@font-face {
+  font-family: "DuplicateSans";
+  src: url(./DuplicateSans.ttf);
+}
+
+@font-face {
+  font-family: "lato";
+  src: url(./Lato-Regular/Lato-Regular.ttf);
+}
+
+.font-DuplicateSans {
+  font-family: "DuplicateSans" !important;
+}
+
+body {
+  font-family: "DuplicateSans";
+}
+
+.right-bg-img {
+  background-image: linear-gradient(
+      0deg,
+      #ff5200 -90.47%,
+      rgba(217, 217, 217, 0) 65.79%
+    ),
+    url("../assets/images/doctor_img.png");
+  height: 100vh;
+  background-size: cover;
+  color: white;
+}
+
+.hamburger {
+  position: relative;
+  width: 24px;
+  height: 2px;
+  transition: all 0.25;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  top: 0;
+  left: 0;
+  background: #000;
+  transform: rotate(0);
+  transition: 0.5s;
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+
+.hamburger-bottom {
+  transform: translateY(14px);
+}
+
+.borderBottomActive {
+  width: 4.11px;
+  height: 70.69px;
+
+  background: #ff5200;
+  border-radius: 0px 8.22394px 8.22394px 0px;
+  transform: rotate(-90deg);
+}
+
+.thebg {
+  background: linear-gradient(
+    180deg,
+    #ff5200 44.33%,
+    rgba(255, 82, 0, 0.5) 70.32%,
+    rgba(255, 82, 0, 0.2) 100%
+  );
+}

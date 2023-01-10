@@ -1,0 +1,14 @@
+query ListHospital {
+  listHospital {
+    _id
+    name
+    address
+    state
+    country
+    contactPhone
+    contactName
+    createdAt
+    updatedAt
+    createdBy
+  }
+}

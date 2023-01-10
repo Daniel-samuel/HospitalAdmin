@@ -1,0 +1,14 @@
+query ListHospitalAdminCreateDoctor {
+  listHospitalAdminCreateDoctor {
+    _id
+    hospital
+    email
+    password
+    name
+    address
+    state
+    country
+    contactPhone
+    category
+  }
+}

@@ -1,0 +1,8 @@
+mutation CreateHospitalAdminLogin($input: HospitalAdminLoginInput) {
+  createHospitalAdminLogin(input: $input) {
+    _id
+    hospital
+    email
+    password
+  }
+}

@@ -1,0 +1,14 @@
+mutation HospitalAdminCreateDoctor($input: HospitalAdminCreateDoctorinput) {
+  hospitalAdminCreateDoctor(input: $input) {
+    _id
+    hospital
+    email
+    password
+    name
+    address
+    state
+    country
+    contactPhone
+    category
+  }
+}
