@@ -23,7 +23,7 @@
 
       <div class="flex flex-wrap">
         <div class="w-full">
-          <div class="overflow-x-auto relative">
+          <div class="overflow-x-auto h-80 overflow-y-scroll relative">
             <table class="min-w-full table-collapse">
               <thead>
                 <tr>
@@ -53,7 +53,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr :key="stafList.stafId" v-for="stafList in stafLists">
+                <tr v-for="Staff in doctors" :key="Staff._id">
                   <td class="px-10 border-t border-gray-200 bg-white text-sm">
                     <div class="flex items-center">
                       <div class="flex-shrink-0 w-10 h-10">
@@ -65,7 +65,7 @@
                       </div>
                       <div class="ml-4">
                         <p class="text-[#52575C] whitespace-no-wrap">
-                          {{ stafList.name }}
+                          {{ Staff.name }}
                         </p>
                       </div>
                     </div>
@@ -73,33 +73,17 @@
                   <td
                     class="px-10 py-5 border-t border-gray-200 bg-white text-sm"
                   >
-                    <p
-                      :class="[
-                        stafList.status === 'Offline' && 'text-[#9D9D9D]',
-                      ]"
-                      class="text-[#52575C] whitespace-no-wrap"
-                    >
-                      {{ stafList.department }}
+                    <p class="text-[#52575C] whitespace-no-wrap">
+                      {{ Staff.category || "N/A" }}
                     </p>
                   </td>
                   <td
                     class="px-10 py-5 border-t border-gray-200 bg-white text-sm"
                   >
                     <p
-                      class="font-semibold whitespace-no-wrap italic"
-                      :class="[
-                        stafList.status === 'Online'
-                          ? 'text-[#25B922]'
-                          : stafList.status === 'Offline'
-                          ? 'text-[#9D9D9D]'
-                          : stafList.status === 'Away'
-                          ? 'text-[#FF0000]'
-                          : stafList.status === 'Break'
-                          ? 'text-[#002092]'
-                          : '',
-                      ]"
+                      class="font-semibold text-[#25B922] whitespace-no-wrap italic"
                     >
-                      {{ stafList.status }}
+                      {{ Staff.status || "N/A" }}
                     </p>
                   </td>
                   <td
@@ -107,26 +91,15 @@
                   >
                     <select
                       id="professions"
-                      class="w-fit border-b-2 text-sm rounded-lg block p-2"
-                      :class="[
-                        stafList.account === 'Activated'
-                          ? 'bg-[#25B922] text-white'
-                          : stafList.account === 'Desactivated'
-                          ? 'bg-[#F9F9F9] text-[#9D9D9D]'
-                          : '',
-                      ]"
+                      class="w-fit bg-[#25B922] text-white border-b-2 text-sm rounded-lg block p-2"
                     >
-                      <option value="activated" selected>
-                        {{ stafList.account }}
-                      </option>
+                      <option value="activated" selected>Active</option>
                       <option value="desactivated">Desactivated</option>
                     </select>
                   </td>
                   <td
                     class="py-5 border-t border-gray-200 bg-white text-sm underline"
-                  >
-                    {{ stafList.query }}
-                  </td>
+                  ></td>
                 </tr>
               </tbody>
             </table>
@@ -138,10 +111,47 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "StafList",
   props: {
     stafLists: Array,
+  },
+  // components: {
+  //   TotalPatientsIcon,
+  //   NewPatientsIcon,
+  //   TotalDoctorsIcon,
+  //   TotalNursesIcon,
+  // },
+  data() {
+    return {
+      doctors: [],
+    };
+  },
+  computed: {
+    ...mapGetters(["getDoctors", "getNurses"]),
+  },
+  methods: {
+    async queryDoctors() {
+      await this.$store.dispatch("query", {
+        endpoint: "listHospitalAdminCreateDoctor",
+        storeKey: "doctors",
+      });
+    },
+
+    async queryNurses() {
+      await this.$store.dispatch("query", {
+        endpoint: "listHospitalAdminCreateNurse",
+        storeKey: "nurses",
+      });
+    },
+  },
+  async created() {
+    await this.queryDoctors();
+    await this.queryNurses();
+    this.doctors = this.getDoctors.concat(this.getNurses);
+    console.log(this.doctors, "DOCS", this.$store.state.data.doctors);
   },
 };
 </script>

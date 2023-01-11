@@ -8,6 +8,7 @@
       <div class="my-6">
         <select
           id="professions"
+          v-model="staffType"
           class="w-fit bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2"
         >
           <option value="doctor" selected>Doctor</option>
@@ -133,7 +134,7 @@
             <option value="female">Female</option>
           </select>
         </div>
-        <div class="w-full">
+        <div v-show="staffType === 'doctor'" class="w-full">
           <label for="name" class="text-sm">Select Department</label>
           <select
             id="professions"
@@ -229,6 +230,8 @@ export default {
         password: "",
         state: "",
       },
+      staffType: "doctor",
+
       categories: [
         "CARDIOLOGIST",
         "DENTIST",
@@ -252,18 +255,35 @@ export default {
     ...mapMutations(["set"]),
 
     async addStaff() {
-      console.log("mmdsmmsmdsm");
-      let res;
-      res = await this.$store.dispatch("mutate", {
-        endpoint: "hospitalAdminCreateDoctor",
-        data: { input: this.args },
-      });
+      if (this.staffType === "doctor") {
+        console.log("mmdsmmsmdsm");
+        let res;
+        res = await this.$store.dispatch("mutate", {
+          endpoint: "hospitalAdminCreateDoctor",
+          data: { input: this.args },
+        });
 
-      if (res) {
-        toast.success(" Successful");
-        alert("Staff Added Successfully");
+        if (res) {
+          toast.success(" Successful");
+          alert("Staff Added Successfully");
 
-        console.log(res);
+          console.log(res);
+        }
+      } else {
+        console.log("mmdsmmsmdsm");
+        delete this.args["category"];
+        let res;
+        res = await this.$store.dispatch("mutate", {
+          endpoint: "hospitalAdminCreateNurse",
+          data: { input: this.args },
+        });
+
+        if (res) {
+          toast.success(" Successful");
+          alert("Staff Added Successfully");
+
+          console.log(res);
+        }
       }
     },
   },

@@ -15,7 +15,7 @@
       <TotalNursesIcon />
       <div>
         <p class="text-sm">Active Nurses</p>
-        <p class="text-xl font-semibold">10</p>
+        <p class="text-xl font-semibold">{{ getNurses.length }}</p>
       </div>
     </div>
     <div
@@ -82,7 +82,7 @@ export default {
     TotalNursesIcon,
   },
   computed: {
-    ...mapGetters(["getDoctors"]),
+    ...mapGetters(["getDoctors", "getNurses"]),
   },
   methods: {
     async queryDoctors() {
@@ -91,9 +91,17 @@ export default {
         storeKey: "doctors",
       });
     },
+
+    async queryNurses() {
+      await this.$store.dispatch("query", {
+        endpoint: "listHospitalAdminCreateNurse",
+        storeKey: "nurses",
+      });
+    },
   },
   async created() {
     await this.queryDoctors();
+    await this.queryNurses();
     console.log(this.getDoctors, "DOCS", this.$store.state.data.doctors);
   },
 };

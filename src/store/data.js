@@ -7,10 +7,12 @@ export default {
 
     inputArgs: {},
     doctors: [],
+    nurses: [],
   },
 
   getters: {
     getDoctors: (state) => state.doctors,
+    getNurses: (state) => state.nurses,
   },
 
   mutations: {
