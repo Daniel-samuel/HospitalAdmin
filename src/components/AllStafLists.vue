@@ -91,46 +91,46 @@
               </tr>
             </thead>
             <tbody>
-              <tr :key="stafList.stafId" v-for="stafList in stafLists">
+              <tr v-for="Staff in doctors" :key="Staff._id">
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
                   <p class="text-[#52575C] font-semibold whitespace-no-wrap">
-                    {{ stafList.stafId }}
+                    {{}}
                   </p>
                 </td>
                 <td class="pl-5 border-t border-gray-200 text-sm">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 w-10 h-10">
-                      <img
+                      <!-- <img
                         class="w-full h-full object-cover rounded-full"
                         :src="stafList.image"
                         alt=""
-                      />
+                      /> -->
                     </div>
                     <div class="ml-4">
                       <p class="text-[#52575C] whitespace-no-wrap">
-                        {{ stafList.name }}
+                        {{ Staff.name }}
                       </p>
                     </div>
                   </div>
                 </td>
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
                   <p class="text-[#52575C] whitespace-no-wrap">
-                    {{ stafList.role }}
+                    {{ Staff.category }}
                   </p>
                 </td>
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
                   <p class="text-[#52575C] font-semibold whitespace-no-wrap">
-                    {{ stafList.email }}
+                    {{ Staff.email }}
                   </p>
                 </td>
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
                   <p class="text-[#52575C] font-semibold whitespace-no-wrap">
-                    {{ stafList.phoneNumber }}
+                    {{ Staff.contactPhone }}
                   </p>
                 </td>
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
                   <p class="text-[#52575C] font-semibold whitespace-no-wrap">
-                    {{ stafList.department }}
+                    {{ Staff.category }}
                   </p>
                 </td>
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
@@ -148,7 +148,7 @@
                         : '',
                     ]"
                   >
-                    {{ stafList.status }}
+                    {{ Staff.status || "Offine" }}
                   </p>
                 </td>
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
@@ -164,13 +164,15 @@
                     ]"
                   >
                     <option value="activated" selected>
-                      {{ stafList.account }}
+                      {{ Staff.account }}
                     </option>
                     <option value="desactivated">Desactivated</option>
                   </select>
                 </td>
-                <td class="pl-5 py-5 border-t border-gray-200 text-sm underline">
-                  {{ stafList.query }}
+                <td
+                  class="pl-5 py-5 border-t border-gray-200 text-sm underline"
+                >
+                  {{ Staff.query }}
                 </td>
               </tr>
             </tbody>
@@ -181,7 +183,7 @@
   </div>
 </template>
 
-<script>
+<!-- <script>
 export default {
   name: "AllStafLists",
   data() {
@@ -387,6 +389,51 @@ export default {
         phoneNumber: "(+234) 813 392 3833",
       },
     ];
+  },
+};
+</script> -->
+<script>
+import { mapGetters } from "vuex";
+
+export default {
+  name: "StafList",
+  props: {
+    stafLists: Array,
+  },
+  // components: {
+  //   TotalPatientsIcon,
+  //   NewPatientsIcon,
+  //   TotalDoctorsIcon,
+  //   TotalNursesIcon,
+  // },
+  data() {
+    return {
+      doctors: [],
+    };
+  },
+  computed: {
+    ...mapGetters(["getDoctors", "getNurses"]),
+  },
+  methods: {
+    async queryDoctors() {
+      await this.$store.dispatch("query", {
+        endpoint: "listHospitalAdminCreateDoctor",
+        storeKey: "doctors",
+      });
+    },
+
+    async queryNurses() {
+      await this.$store.dispatch("query", {
+        endpoint: "listHospitalAdminCreateNurse",
+        storeKey: "nurses",
+      });
+    },
+  },
+  async created() {
+    await this.queryDoctors();
+    await this.queryNurses();
+    this.doctors = this.getDoctors.concat(this.getNurses);
+    console.log(this.doctors, "DOCS", this.$store.state.data.doctors);
   },
 };
 </script>
