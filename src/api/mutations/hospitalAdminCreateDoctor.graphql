@@ -10,5 +10,9 @@ mutation HospitalAdminCreateDoctor($input: HospitalAdminCreateDoctorinput) {
     country
     contactPhone
     category
+    age
+    sex
+    DOB
+    biography
   }
 }

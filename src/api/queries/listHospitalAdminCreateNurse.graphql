@@ -8,5 +8,8 @@ query ListHospitalAdminCreateNurse {
     state
     country
     contactPhone
+    age
+    sex
+    biography
   }
 }

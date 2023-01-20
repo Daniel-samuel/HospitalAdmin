@@ -121,6 +121,7 @@
             name=""
             id=""
             placeholder="Age"
+            v-model="args.age"
           />
         </div>
         <div class="w-full">
@@ -130,8 +131,9 @@
             class="w-full text-xs border rounded-[4px] px-3 py-2 focus:outline-none focus:border-[#FF5200] focus:ring-0"
           >
             <option selected>Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            <option v-for="se in Sex" :key="se" :value="se">
+              {{ se }}
+            </option>
           </select>
         </div>
         <div v-show="staffType === 'doctor'" class="w-full">
@@ -168,6 +170,7 @@
             name=""
             id=""
             placeholder="Separate skills with commas"
+            v-model="args.DOB"
           />
         </div>
         <div class="w-full">
@@ -190,6 +193,7 @@
           rows="10"
           class="w-full text-xs border rounded-[4px] p-8 focus:outline-none focus:border-[#FF5200] focus:ring-0"
           placeholder="Write a short biography"
+          v-model="args.biography"
         ></textarea>
         <div class="px-4 py-3">
           <div class="flex flex-row items-center justify-end">
@@ -229,6 +233,10 @@ export default {
         name: "",
         password: "",
         state: "",
+        age: "",
+        biography: "",
+        DOB: "",
+        sex: "",
       },
       staffType: "doctor",
 
@@ -249,6 +257,8 @@ export default {
         "PSYCHIATRIST",
         "UROLOGIST",
       ],
+
+      Sex: ["MALE", "FEMALE"],
     };
   },
   methods: {

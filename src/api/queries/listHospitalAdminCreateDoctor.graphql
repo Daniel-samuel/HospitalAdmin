@@ -10,5 +10,9 @@ query ListHospitalAdminCreateDoctor {
     country
     contactPhone
     category
+    age
+    sex
+    DOB
+    biography
   }
 }
