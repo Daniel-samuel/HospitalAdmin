@@ -129,6 +129,7 @@
           <select
             id="professions"
             class="w-full text-xs border rounded-[4px] px-3 py-2 focus:outline-none focus:border-[#FF5200] focus:ring-0"
+            v-model="args.sex"
           >
             <option selected>Select Gender</option>
             <option v-for="se in Sex" :key="se" :value="se">
