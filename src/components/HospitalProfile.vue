@@ -72,7 +72,7 @@ export default {
   async created() {
     await this.queryHospital();
     // await this.queryNurses();
-    this.hopital = this.getHospital;
+    this.hospital = this.getHospital;
     console.log(this.hospital, this.getHospital);
   },
 };
