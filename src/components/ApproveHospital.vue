@@ -116,126 +116,47 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
-import HospitalDetails from "@/components/HospitalDetails.vue";
-import PopupModal from "@/components/PopupModal.vue";
-import Popupe from "@/components/Popupe.vue";
+import { mapGetters } from "vuex";
 
-export default defineComponent({
-  name: "Patient",
-  components: {
-    HospitalDetails,
-    PopupModal,
-    Popupe,
+export default {
+  name: "StafList",
+  props: {
+    stafLists: Array,
   },
-  setup() {
-    const popupTriggers = ref({
-      buttonTrigger: false,
-      timedTrigger: false,
-    });
-    const TogglePopup = (trigger) => {
-      popupTriggers.value[trigger] = !popupTriggers.value[trigger];
+  // components: {
+  //   TotalPatientsIcon,
+  //   NewPatientsIcon,
+  //   TotalDoctorsIcon,
+  //   TotalNursesIcon,
+  // },
+  data() {
+    return {
+      doctors: [],
     };
-    const HospitalLists = [
-      {
-        HospitalNumber: 1,
-        hospitalName: "Reddington Hospital",
-        address: "8, Olajide Jibowu Street, Baruwa Bus stop, Lagos",
-        department: 5,
-        doctorCount: 5,
-        nurseCount: 5,
-      },
-      {
-        HospitalNumber: 2,
-        hospitalName: "Reddington Hospital",
-        address: "8, Olajide Jibowu Street, Baruwa Bus stop, Lagos",
-        department: 5,
-        doctorCount: 5,
-        nurseCount: 5,
-      },
-      {
-        HospitalNumber: 3,
-        hospitalName: "Reddington Hospital",
-        address: "8, Olajide Jibowu Street, Baruwa Bus stop, Lagos",
-        department: 5,
-        doctorCount: 5,
-        nurseCount: 5,
-      },
-      {
-        HospitalNumber: 4,
-        hospitalName: "Reddington Hospital",
-        address: "8, Olajide Jibowu Street, Baruwa Bus stop, Lagos",
-        department: 5,
-        doctorCount: 5,
-        nurseCount: 5,
-      },
-      {
-        HospitalNumber: 5,
-        hospitalName: "Reddington Hospital",
-        address: "8, Olajide Jibowu Street, Baruwa Bus stop, Lagos",
-        department: 5,
-        doctorCount: 5,
-        nurseCount: 5,
-      },
-      {
-        HospitalNumber: 6,
-        hospitalName: "Reddington Hospital",
-        address: "8, Olajide Jibowu Street, Baruwa Bus stop, Lagos",
-        department: 5,
-        doctorCount: 5,
-        nurseCount: 5,
-      },
-      {
-        HospitalNumber: 7,
-        hospitalName: "Reddington Hospital",
-        address: "8, Olajide Jibowu Street, Baruwa Bus stop, Lagos",
-        department: 5,
-        doctorCount: 5,
-        nurseCount: 5,
-      },
-      {
-        HospitalNumber: 8,
-        hospitalName: "Reddington Hospital",
-        address: "8, Olajide Jibowu Street, Baruwa Bus stop, Lagos",
-        department: 5,
-        doctorCount: 5,
-        nurseCount: 5,
-      },
-      {
-        HospitalNumber: 9,
-        hospitalName: "Reddington Hospital",
-        address: "8, Olajide Jibowu Street, Baruwa Bus stop, Lagos",
-        department: 5,
-        doctorCount: 5,
-        nurseCount: 5,
-      },
-      {
-        HospitalNumber: 10,
-        hospitalName: "Reddington Hospital",
-        address: "8, Olajide Jibowu Street, Baruwa Bus stop, Lagos",
-        department: 5,
-        doctorCount: 5,
-        nurseCount: 5,
-      },
-      {
-        HospitalNumber: 11,
-        hospitalName: "Reddington Hospital",
-        address: "8, Olajide Jibowu Street, Baruwa Bus stop, Lagos",
-        department: 5,
-        doctorCount: 5,
-        nurseCount: 5,
-      },
-      {
-        HospitalNumber: 12,
-        hospitalName: "Reddington Hospital",
-        address: "8, Olajide Jibowu Street, Baruwa Bus stop, Lagos",
-        department: 5,
-        doctorCount: 5,
-        nurseCount: 5,
-      },
-    ];
-
-    return { HospitalLists, Popupe, popupTriggers, TogglePopup };
   },
-});
+  computed: {
+    ...mapGetters(["getDoctors", "getNurses"]),
+  },
+  methods: {
+    async queryDoctors() {
+      await this.$store.dispatch("query", {
+        endpoint: "listHospitalAdminCreateDoctor",
+        storeKey: "doctors",
+      });
+    },
+
+    async queryNurses() {
+      await this.$store.dispatch("query", {
+        endpoint: "listHospitalAdminCreateNurse",
+        storeKey: "nurses",
+      });
+    },
+  },
+  async created() {
+    await this.queryDoctors();
+    await this.queryNurses();
+    this.doctors = this.getDoctors.concat(this.getNurses);
+    console.log(this.doctors, "DOCS", this.$store.state.data.doctors);
+  },
+};
 </script>
