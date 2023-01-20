@@ -52,7 +52,7 @@ export default {
     ...mapGetters(["getHospital"]),
   },
   methods: {
-    async queryDoctors() {
+    async queryHospital() {
       await this.$store.dispatch("query", {
         endpoint: "listHospital",
         storeKey: "hospital",
