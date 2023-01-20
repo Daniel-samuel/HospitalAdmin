@@ -152,22 +152,13 @@
                   </p> -->
                 </td>
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
-                  <!-- <select
+                  <select
                     id="professions"
                     class="w-fit border-b-2 text-sm rounded-lg block p-2"
-                    :class="[
-                      stafList.account === 'Activated'
-                        ? 'bg-[#25B922] text-white'
-                        : stafList.account === 'Desactivated'
-                        ? 'bg-[#F9F9F9] text-[#9D9D9D]'
-                        : '',
-                    ]"
                   >
-                    <option value="activated" selected>
-                      {{ "" }}
-                    </option>
+                    <option value="activated" selected>Active</option>
                     <option value="desactivated">Desactivated</option>
-                  </select> -->
+                  </select>
                 </td>
                 <td
                   class="pl-5 py-5 border-t border-gray-200 text-sm underline"
