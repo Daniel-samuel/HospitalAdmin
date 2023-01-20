@@ -55,8 +55,10 @@ export default {
   },
   methods: {
     async queryHospital() {
+      const id = localStorage.getItem("hospital");
       await this.$store.dispatch("query", {
-        endpoint: "listHospital",
+        payload: { id },
+        endpoint: "viewHospital",
         storeKey: "hospital",
       });
     },

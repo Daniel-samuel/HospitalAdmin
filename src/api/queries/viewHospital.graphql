@@ -1,0 +1,17 @@
+query ViewHospital($viewHospitalId: ID!) {
+  viewHospital(id: $viewHospitalId) {
+    _id
+    name
+    address
+    state
+    country
+    hospitalLicence
+    doctorCount
+    nurseCount
+    contactPhone
+    contactName
+    createdAt
+    updatedAt
+    createdBy
+  }
+}
