@@ -8,11 +8,13 @@ export default {
     inputArgs: {},
     doctors: [],
     nurses: [],
+    hospital: [],
   },
 
   getters: {
     getDoctors: (state) => state.doctors,
     getNurses: (state) => state.nurses,
+    getHospital: (state) => state.hospital,
   },
 
   mutations: {
