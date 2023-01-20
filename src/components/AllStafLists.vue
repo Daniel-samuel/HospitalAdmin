@@ -94,7 +94,7 @@
               <tr v-for="Staff in doctors" :key="Staff._id">
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
                   <p class="text-[#52575C] font-semibold whitespace-no-wrap">
-                    {{}}
+                    <!-- {{}} -->
                   </p>
                 </td>
                 <td class="pl-5 border-t border-gray-200 text-sm">
@@ -148,7 +148,7 @@
                         : '',
                     ]"
                   >
-                    {{ "" }}
+                    <!-- {{ "" }} -->
                   </p>
                 </td>
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
@@ -164,7 +164,7 @@
                     ]"
                   >
                     <option value="activated" selected>
-                      {{ "" }}
+                      <!-- {{ "" }} -->
                     </option>
                     <option value="desactivated">Desactivated</option>
                   </select>
@@ -172,7 +172,7 @@
                 <td
                   class="pl-5 py-5 border-t border-gray-200 text-sm underline"
                 >
-                  {{ "" }}
+                  <!-- {{ "" }} -->
                 </td>
               </tr>
             </tbody>
