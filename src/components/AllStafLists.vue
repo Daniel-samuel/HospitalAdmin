@@ -148,7 +148,7 @@
                         : '',
                     ]"
                   >
-                    {{ Staff.status || "Offine" }}
+                    {{ "" }}
                   </p>
                 </td>
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
@@ -164,7 +164,7 @@
                     ]"
                   >
                     <option value="activated" selected>
-                      {{ Staff.account }}
+                      {{ "" }}
                     </option>
                     <option value="desactivated">Desactivated</option>
                   </select>
@@ -172,7 +172,7 @@
                 <td
                   class="pl-5 py-5 border-t border-gray-200 text-sm underline"
                 >
-                  {{ Staff.query }}
+                  {{ "" }}
                 </td>
               </tr>
             </tbody>
