@@ -73,7 +73,7 @@ export default {
     await this.queryHospital();
     // await this.queryNurses();
     this.hopital = this.getHospital;
-    console.log(this.hospital, "DOCS", this.$store.state.data.hopital);
+    console.log(this.hospital, this.getHospital);
   },
 };
 </script>
