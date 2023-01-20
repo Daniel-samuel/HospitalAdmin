@@ -74,7 +74,11 @@ export default {
     await this.queryHospital();
     // await this.queryNurses();
     this.hospital = this.getHospital;
-    console.log(this.hospital, this.getHospital);
+    console.log(
+      typeof this.hospital,
+      typeof this.getHospital,
+      this.hospital.name
+    );
   },
 };
 </script>
