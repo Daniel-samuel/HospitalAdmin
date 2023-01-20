@@ -134,7 +134,7 @@
                   </p>
                 </td>
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
-                  <p
+                  <!-- <p
                     class="font-semibold whitespace-no-wrap italic"
                     :class="[
                       stafList.status === 'Online'
@@ -148,11 +148,11 @@
                         : '',
                     ]"
                   >
-                    <!-- {{ "" }} -->
-                  </p>
+                    {{ "" }}
+                  </p> -->
                 </td>
                 <td class="pl-5 py-5 border-t border-gray-200 text-sm">
-                  <select
+                  <!-- <select
                     id="professions"
                     class="w-fit border-b-2 text-sm rounded-lg block p-2"
                     :class="[
@@ -164,10 +164,10 @@
                     ]"
                   >
                     <option value="activated" selected>
-                      <!-- {{ "" }} -->
+                      {{ "" }}
                     </option>
                     <option value="desactivated">Desactivated</option>
-                  </select>
+                  </select> -->
                 </td>
                 <td
                   class="pl-5 py-5 border-t border-gray-200 text-sm underline"
