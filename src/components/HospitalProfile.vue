@@ -7,7 +7,7 @@
       <div class="flex flex-col space-y-4">
         <div>
           <p class="text-base text-[#25282B]">Hospital Name</p>
-          <p class="text-sm text-[#52575C]">{{ hosiptal.name }}</p>
+          <p class="text-sm text-[#52575C]">{{ hospital.name }}</p>
         </div>
         <div>
           <p class="text-base text-[#25282B]">Address</p>
