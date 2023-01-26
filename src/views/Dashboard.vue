@@ -10,11 +10,15 @@
 <script>
 import Sidebar from "./Admin/Sidebar.vue";
 import MainContent from "./Admin/MainContent.vue";
+import MainDashboard from "./Admin/MainDashboard.vue";
+import PatientSummary from "./Admin/PatientSummary.vue";
 export default {
   name: "Dashboard",
   components: {
     Sidebar,
     MainContent,
+    MainDashboard,
+    PatientSummary,
   },
   data() {
     return {
