@@ -30,9 +30,7 @@
     </div>
     <div class="flex flex-row items-center space-x-10">
       <div class="flex flex-row items-center space-x-10">
-        <div class="hidden md:block text-lg font-bold">
-          Welcome, Dr. {{ docname.name }}
-        </div>
+        <div class="hidden md:block text-lg font-bold">Welcome, Dr.</div>
         <span class="bg-[#25B922] text-white border-b-2 rounded-3xl px-6 py-2"
           >Online</span
         >
