@@ -9,12 +9,14 @@ export default {
     doctors: [],
     nurses: [],
     hospital: [],
+    docname: [],
   },
 
   getters: {
     getDoctors: (state) => state.doctors,
     getNurses: (state) => state.nurses,
     getHospital: (state) => state.hospital,
+    getDocname: (state) => state.docname,
   },
 
   mutations: {

@@ -1,0 +1,9 @@
+query ViewLoginDoctor($viewLoginDoctorId: ID!) {
+  viewLoginDoctor(id: $viewLoginDoctorId) {
+    _id
+    email
+    hospital
+    password
+    token
+  }
+}

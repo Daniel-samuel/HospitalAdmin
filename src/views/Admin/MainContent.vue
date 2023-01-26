@@ -31,7 +31,7 @@
     <div class="flex flex-row items-center space-x-10">
       <div class="flex flex-row items-center space-x-10">
         <div class="hidden md:block text-lg font-bold">
-          Welcome, Dr. Adebayo Solanke
+          Welcome, Dr. {{ docname.name }}
         </div>
         <span class="bg-[#25B922] text-white border-b-2 rounded-3xl px-6 py-2"
           >Online</span
@@ -50,23 +50,4 @@
   </div>
 </template>
 
-<script>
-import MainDashboard from "./MainDashboard.vue";
-
-export default {
-  name: "MainContent",
-  components: {
-    MainDashboard,
-  },
-
-  computed: {
-    ShowMainDashboard() {
-      if (this.$route.path === "/dashboard") {
-        return true;
-      } else {
-        return false;
-      }
-    },
-  },
-};
-</script>
+<script></script>

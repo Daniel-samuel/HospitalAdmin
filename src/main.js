@@ -24,8 +24,8 @@ const additiveLink = from([
     }));
     return forward(operation); // Go to the next link in the chain. Similar to `next` in Express.js middleware.
   }),
-  // new HttpLink({ uri: "https://turboserver-rzoozctlrq-uc.a.run.app/graphql" }),
-  new HttpLink({ uri: "http://localhost:3000/graphql" }),
+  new HttpLink({ uri: "https://turboserver-rzoozctlrq-uc.a.run.app/graphql" }),
+  // new HttpLink({ uri: "http://localhost:3000/graphql" }),
 ]);
 
 const apolloClient = new ApolloClient({
