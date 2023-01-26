@@ -48,4 +48,24 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import MainDashboard from "./MainDashboard.vue";
+
+export default {
+  name: "MainContent",
+  components: {
+    MainDashboard,
+  },
+
+  computed: {
+    ShowMainDashboard() {
+      if (this.$route.path === "/dashboard") {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+};
+</script>
+
